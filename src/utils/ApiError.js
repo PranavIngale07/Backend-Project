@@ -1,5 +1,5 @@
-class ApiError extends Error {
-    constructor(
+class ApiError extends Error { //This means ApiError inherits properties and methods from the Error class.
+    constructor(               //It takes four parameters
         statesCode,
         message = "Something went wrong",
         errors = [],
