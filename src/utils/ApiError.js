@@ -1,12 +1,12 @@
 class ApiError extends Error { //This means ApiError inherits properties and methods from the Error class.
     constructor(               //It takes four parameters
-        statesCode,
+        statusCode,
         message = "Something went wrong",
         errors = [],
         statck = ""
     ){
         super(message)
-        this.statesCode = statesCode
+        this.statusCode = statusCode
         this.data = null
         this.message = message
         this.success = false;
