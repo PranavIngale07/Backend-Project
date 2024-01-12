@@ -8,13 +8,18 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 const generateAccessTokenAndRefreshToken = async (userId) => {
     try {
         const user = await User.findById(userId)
-        const accesssToken = user.generateAccessToken()
+        const accessToken = user.generateAccessToken()
         const refreshToken = user.generateRefresToken()
 
+        // if (!accessToken === undefined) {
+        //     throw new ApiError(500,"access token error")  
+        // }
+
+        // console.log(accessToken)
         user.refreshToken = refreshToken //-> put refresh token in DB
         await user.save({ validateBeforeSave: false }) //-> user save in db ig
 
-        return { accesssToken, refreshToken }
+        return { accessToken, refreshToken }
 
     } catch (error) {
         throw new ApiError(500, "Something went wrong while generating access token and refresh token")
